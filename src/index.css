@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
 html {
-  height: 100%;
+  height: 100vh;
 }
 body {
   font-family: "Roboto", sans-serif;
   background: linear-gradient(to left bottom, #49a09d, #5f2c82);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
