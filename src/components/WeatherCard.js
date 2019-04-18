@@ -21,7 +21,7 @@ class WeatherCard extends React.Component {
     const { city } = this.props;
     return (
       <Grid.Column
-        mobile={12}
+        mobile={14}
         tablet={6}
         computer={4}
         style={{ marginBottom: "2rem" }}

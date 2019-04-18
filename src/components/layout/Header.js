@@ -39,17 +39,10 @@ class Header extends Component {
                 Weather Cards
               </p>
             </Menu.Item>
-            <Popup
-              trigger={
-                <Menu.Item name="location" onClick={this.getCurrentLocation}>
-                  <Icon name="location arrow" color="blue" />
-                  Current location
-                </Menu.Item>
-              }
-              content="Allow location access"
-              inverted
-              size="small"
-            />
+            <Menu.Item name="location" onClick={this.getCurrentLocation}>
+              <Icon name="location arrow" color="blue" />
+              Current location
+            </Menu.Item>
             <Menu.Item>
               <Input
                 onKeyPress={this.handleSearch}
