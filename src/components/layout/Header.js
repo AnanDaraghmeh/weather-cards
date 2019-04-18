@@ -33,16 +33,15 @@ class App extends Component {
     return (
       <div style={{ paddingTop: "1rem", paddingBottom: "3rem" }}>
         <Container>
-          <Menu compact secondary>
+          <Menu stackable compact>
             <Menu.Item>
-              <Header color="teal" inverted>
-                Weather Cards
-              </Header>
+              <Header color="blue">Weather Cards</Header>
             </Menu.Item>
             <Popup
               trigger={
                 <Menu.Item name="location" onClick={this.getCurrentLocation}>
-                  <Icon name="location arrow" color="teal" inverted />
+                  <Icon name="location arrow" color="blue" />
+                  Current location
                 </Menu.Item>
               }
               content="Allow location access"
