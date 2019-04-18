@@ -1,29 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import { Grid } from "semantic-ui-react";
 
 import WeatherCard from "./WeatherCard";
-import Spinner from "./layout/Spinner";
 import Landing from "./Landing";
-
-const Grid = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 class WeatherDashboard extends React.Component {
   render() {
     const { asyncStatus, weatherData } = this.props;
     return (
-      <Container>
-        <Grid>
+      <Grid container columns="equal" centered stretched>
+        <Grid.Row>
           {asyncStatus === "asyncSuccess" &&
             weatherData.map(city => {
               return <WeatherCard city={city} key={city.name} />;
@@ -32,10 +19,9 @@ class WeatherDashboard extends React.Component {
             weatherData.map(city => {
               return <WeatherCard city={city} key={city.name} />;
             })}
-          {asyncStatus === "asyncStart" && <Spinner />}
           {asyncStatus === null && <Landing />}
-        </Grid>
-      </Container>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

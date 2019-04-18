@@ -1,23 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Image, Grid, Label, Icon, Button } from "semantic-ui-react";
-import styled from "styled-components";
+import { Card, Image, Grid, Label, Icon } from "semantic-ui-react";
 
 import { getWeatherIcon } from "../helpers/getWeatherIcon";
 import { capitalizeString } from "../helpers";
 import { openModal, removeCard } from "../store/actions";
-
-const Wrapper = styled.div`
-  flex-basis: 80%;
-  margin: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    flex-basis: 40%;
-  }
-  @media only screen and (min-width: 992px) {
-    flex-basis: 25%;
-  }
-`;
 
 class WeatherCard extends React.Component {
   openAdditionalInfoModal = e => {
@@ -33,11 +20,21 @@ class WeatherCard extends React.Component {
   render() {
     const { city } = this.props;
     return (
-      <Wrapper>
-        <Card raised>
+      <Grid.Column
+        mobile={12}
+        tablet={6}
+        computer={4}
+        style={{ marginBottom: "2rem" }}
+      >
+        <Card style={{ width: "100%" }}>
           <Image
             src={getWeatherIcon(city)}
-            style={{ width: "300px", padding: ".5rem 1rem" }}
+            fluid
+            style={{
+              padding: ".5rem 1rem",
+              background: "darkcyan",
+              margin: "0"
+            }}
           />
           <Card.Content>
             <Card.Header>
@@ -73,7 +70,7 @@ class WeatherCard extends React.Component {
             </a>
           </Card.Content>
         </Card>
-      </Wrapper>
+      </Grid.Column>
     );
   }
 }

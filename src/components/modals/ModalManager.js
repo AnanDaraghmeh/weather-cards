@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import WeatherMoreInfo from "./WeatherMoreInfo";
-import ToasterError from "./ToasterError";
 
 class ModalManager extends React.Component {
   renderModal = () => {
@@ -11,8 +10,6 @@ class ModalManager extends React.Component {
       switch (modal.name) {
         case "additionalInfo":
           return <WeatherMoreInfo city={modal.extraInfo} />;
-        case "asyncError":
-          return <ToasterError />;
         default:
           return null;
       }
@@ -25,8 +22,7 @@ class ModalManager extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    modal: state.modal,
-    asyncStatus: state.async
+    modal: state.modal
   };
 };
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchWeatherData, fetchCurrentLocation } from "../../store/actions";
-import { Menu, Input, Container, Icon, Popup, Header } from "semantic-ui-react";
+import { Menu, Input, Container, Icon, Popup } from "semantic-ui-react";
 
-class App extends Component {
+class Header extends Component {
   state = {
     searchQuery: ""
   };
@@ -35,7 +35,9 @@ class App extends Component {
         <Container>
           <Menu stackable compact>
             <Menu.Item>
-              <Header color="blue">Weather Cards</Header>
+              <p as="h2" color="blue">
+                Weather Cards
+              </p>
             </Menu.Item>
             <Popup
               trigger={
@@ -74,4 +76,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { fetchWeatherData, fetchCurrentLocation }
-)(App);
+)(Header);

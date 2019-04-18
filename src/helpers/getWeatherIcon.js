@@ -12,12 +12,13 @@ function getWeatherIcon(weatherData) {
   const weatherDesc = weatherData.weather[0].description;
   const currentTime = Date.parse(new Date());
   const sunsetTime = Date.parse(new Date(weatherData.sys.sunset * 1000));
+  const sunriseTime = Date.parse(new Date(weatherData.sys.sunrise * 1000));
 
   if (weatherDesc.includes("clear")) {
-    if (currentTime > sunsetTime) {
-      imgSrc = night;
-    } else {
+    if (currentTime > sunriseTime && currentTime < sunsetTime) {
       imgSrc = day;
+    } else {
+      imgSrc = night;
     }
   } else if (weatherDesc.includes("rain") || weatherDesc.includes("drizzle")) {
     imgSrc = rainy;
