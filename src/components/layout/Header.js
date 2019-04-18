@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchWeatherData, fetchCurrentLocation } from "../../store/actions";
-import { Menu, Input, Container, Icon, Popup } from "semantic-ui-react";
+import { Menu, Input, Container, Icon, Popup, Header } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -34,20 +34,18 @@ class App extends Component {
       <div style={{ paddingTop: "1rem", paddingBottom: "3rem" }}>
         <Container>
           <Menu compact secondary>
-            <Menu.Item header style={{ color: "white" }}>
-              Weather Cards
+            <Menu.Item>
+              <Header color="teal" inverted>
+                Weather Cards
+              </Header>
             </Menu.Item>
             <Popup
               trigger={
-                <Menu.Item
-                  name="location"
-                  onClick={this.getCurrentLocation}
-                  style={{ color: "white" }}
-                >
-                  <Icon name="location arrow" />
+                <Menu.Item name="location" onClick={this.getCurrentLocation}>
+                  <Icon name="location arrow" color="teal" inverted />
                 </Menu.Item>
               }
-              content="Get current location"
+              content="Allow location access"
               inverted
               size="small"
             />

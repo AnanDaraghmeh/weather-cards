@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Image, Grid, Label, Icon } from "semantic-ui-react";
+import { Card, Image, Grid, Label, Icon, Button } from "semantic-ui-react";
 
 import { getWeatherIcon } from "../helpers/getWeatherIcon";
 import { capitalizeString } from "../helpers";
@@ -26,18 +26,31 @@ class WeatherCard extends React.Component {
         computer={4}
         style={{ marginBottom: "1rem" }}
       >
-        <Card>
-          <Image src={getWeatherIcon(city)} size="medium" />
+        <Card raised>
+          <Image
+            src={getWeatherIcon(city)}
+            fluid
+            style={{ padding: ".5rem 1rem" }}
+          />
           <Card.Content>
             <Card.Header>
               {capitalizeString(city.weather[0].description)} in {city.name},{" "}
               {city.sys.country}
             </Card.Header>
             <Card.Description>
-              <Label.Group circular>
-                <Label>Current: {parseInt(city.main.temp)}°C</Label>
-                <Label>Min: {parseInt(city.main.temp_min)}°C</Label>
-                <Label>Max: {parseInt(city.main.temp_max)}°C</Label>
+              <Label.Group>
+                <Label>
+                  <Icon name="thermometer" />
+                  {parseInt(city.main.temp)}°C
+                </Label>
+                <Label>
+                  <Icon name="arrow down" />
+                  {parseInt(city.main.temp_min)}°C
+                </Label>
+                <Label>
+                  <Icon name="arrow up" />
+                  {parseInt(city.main.temp_max)}°C
+                </Label>
               </Label.Group>
             </Card.Description>
           </Card.Content>

@@ -12,7 +12,7 @@ class WeatherDashboard extends React.Component {
     return (
       <Container>
         <Grid>
-          <Grid.Row verticalAlign="middle">
+          <Grid.Row verticalAlign="middle" stretched>
             {asyncStatus === "asyncSuccess" &&
               weatherData.map(city => {
                 return <WeatherCard city={city} key={city.name} />;
