@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchWeatherData, fetchCurrentLocation } from "../../store/actions";
-import { Menu, Input, Container, Icon, Popup } from "semantic-ui-react";
+import { Menu, Input, Container, Icon, Header } from "semantic-ui-react";
 
-class Header extends Component {
+class AppHeader extends Component {
   state = {
     searchQuery: ""
   };
@@ -35,9 +35,7 @@ class Header extends Component {
         <Container>
           <Menu stackable compact>
             <Menu.Item>
-              <p as="h2" color="blue">
-                Weather Cards
-              </p>
+              <Header color="blue">Weather Cards</Header>
             </Menu.Item>
             <Menu.Item name="location" onClick={this.getCurrentLocation}>
               <Icon name="location arrow" color="blue" />
@@ -69,4 +67,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { fetchWeatherData, fetchCurrentLocation }
-)(Header);
+)(AppHeader);

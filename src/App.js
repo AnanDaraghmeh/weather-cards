@@ -8,8 +8,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Layout />
-        <WeatherDashboard />
+        <div className="app">
+          <Layout />
+          <WeatherDashboard />
+        </div>
       </BrowserRouter>
     );
   }

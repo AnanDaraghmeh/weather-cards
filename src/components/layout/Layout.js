@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "./Header";
+import AppHeader from "./Header";
 import ModalManager from "../modals/ModalManager";
 import LoadingBar from "react-redux-loading-bar";
 import ReduxToastr from "react-redux-toastr";
@@ -8,7 +8,7 @@ import ReduxToastr from "react-redux-toastr";
 const Layout = () => {
   return (
     <div>
-      <LoadingBar showFastActions />
+      <LoadingBar showFastActions style={{ background: "crimson" }} />
       <ModalManager />
       <ReduxToastr
         position="bottom-right"
@@ -19,7 +19,7 @@ const Layout = () => {
         timeOut={5000}
         newestOnTop={true}
       />
-      <Header />
+      <AppHeader />
     </div>
   );
 };

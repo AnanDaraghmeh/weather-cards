@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Image, Grid, Label, Icon } from "semantic-ui-react";
+import { Card, Grid, Label, Icon } from "semantic-ui-react";
 
 import { getWeatherIcon } from "../helpers/getWeatherIcon";
 import { capitalizeString } from "../helpers";
@@ -27,15 +27,7 @@ class WeatherCard extends React.Component {
         style={{ marginBottom: "2rem" }}
       >
         <Card style={{ width: "100%" }}>
-          <Image
-            src={getWeatherIcon(city)}
-            fluid
-            style={{
-              padding: ".5rem 1rem",
-              background: "darkcyan",
-              margin: "0"
-            }}
-          />
+          {getWeatherIcon(city)}
           <Card.Content>
             <Card.Header>
               {capitalizeString(city.weather[0].description)} in {city.name},{" "}
@@ -64,7 +56,11 @@ class WeatherCard extends React.Component {
               Additional Information
             </a>
             <br />
-            <a data-city={city.name} onClick={this.removeWeatherCard}>
+            <a
+              data-city={city.name}
+              onClick={this.removeWeatherCard}
+              className="remove-card"
+            >
               <Icon name="delete" />
               Remove this card
             </a>
