@@ -8,10 +8,10 @@ const Landing = () => {
         <Header as="h2" style={{ color: "white" }}>
           Welcome to Weather Cards!
         </Header>
-        <Header style={{ color: "white" }}>
+        <p style={{ color: "white", fontSize: "1.2rem" }}>
           Search for cities or allow access to your location to start adding
           weather cards.
-        </Header>
+        </p>
       </Container>
     </Segment>
   );
