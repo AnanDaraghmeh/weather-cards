@@ -1,11 +1,21 @@
+import localforage from 'localforage';
+import { WEATHER_DATA, LOCAL_DATA, REMOVE_CARD } from '../actions/constants';
+
 export default (state = [], action) => {
   switch (action.type) {
-    case "WEATHER_DATA":
+    case LOCAL_DATA:
+      return action.payload;
+    case WEATHER_DATA:
       const filteredState = state.filter(
         item => item.name !== action.payload.name
       );
-      return [...filteredState, action.payload];
-    case "REMOVE_CARD":
+      localforage.setItem('weatherData', [action.payload, ...filteredState]);
+      return [action.payload, ...filteredState];
+    case REMOVE_CARD:
+      localforage.setItem(
+        'weatherData',
+        state.filter(item => item.name !== action.payload)
+      );
       return state.filter(item => item.name !== action.payload);
     default:
       return state;

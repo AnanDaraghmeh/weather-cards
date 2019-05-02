@@ -1,28 +1,33 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Grid } from "semantic-ui-react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Grid } from 'semantic-ui-react';
 
-import WeatherCard from "./WeatherCard";
-import Landing from "./Landing";
+import WeatherCard from './WeatherCard';
+import Landing from './Landing';
+import * as actions from '../store/actions';
 
 class WeatherDashboard extends React.Component {
+  componentDidMount() {
+    this.props.fetchLocalForage();
+  }
   render() {
     const { asyncStatus, weatherData } = this.props;
-    return (
-      <Grid container columns="equal" centered stretched>
-        <Grid.Row>
-          {asyncStatus === "asyncSuccess" &&
-            weatherData.map(city => {
+    if (asyncStatus === 'asyncSuccess' || asyncStatus === 'asyncError') {
+      if (weatherData.length === 0) {
+        return <Landing />;
+      }
+      return (
+        <Grid container columns="equal" centered stretched>
+          <Grid.Row>
+            {weatherData.map(city => {
               return <WeatherCard city={city} key={city.name} />;
             })}
-          {asyncStatus === "asyncError" &&
-            weatherData.map(city => {
-              return <WeatherCard city={city} key={city.name} />;
-            })}
-          {asyncStatus === null && <Landing />}
-        </Grid.Row>
-      </Grid>
-    );
+          </Grid.Row>
+        </Grid>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
@@ -33,4 +38,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(WeatherDashboard);
+export default connect(
+  mapStateToProps,
+  actions
+)(WeatherDashboard);
