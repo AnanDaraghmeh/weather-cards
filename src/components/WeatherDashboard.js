@@ -1,14 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
+import localforage from 'localforage';
 
 import WeatherCard from './WeatherCard';
 import Landing from './Landing';
 import * as actions from '../store/actions';
 
 class WeatherDashboard extends React.Component {
-  componentDidMount() {
-    this.props.fetchLocalForage();
+  async componentDidMount() {
+    const storedData = await localforage.getItem('weatherData');
+    if (storedData && storedData.length > 0) {
+      storedData.forEach(city => {
+        this.props.fetchWeatherData(city.name);
+      });
+    } else {
+      this.props.noLocalData();
+    }
   }
   render() {
     const { asyncStatus, weatherData } = this.props;

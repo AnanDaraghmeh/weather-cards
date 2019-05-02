@@ -1,14 +1,12 @@
 import axios from 'axios';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { toastr } from 'react-redux-toastr';
-import localforage from 'localforage';
 
 import {
   WEATHER_DATA,
   ASYNC_START,
   ASYNC_SUCCESS,
   ASYNC_ERROR,
-  LOCAL_DATA,
   REMOVE_CARD
 } from './constants';
 
@@ -67,20 +65,8 @@ export const removeCard = cityName => {
   };
 };
 
-export const fetchLocalForage = () => {
-  return async dispatch => {
-    try {
-      const storedData = await localforage.getItem('weatherData');
-      if (storedData) {
-        dispatch({ type: ASYNC_START });
-        dispatch({
-          type: LOCAL_DATA,
-          payload: storedData
-        });
-        dispatch({ type: ASYNC_SUCCESS });
-      }
-    } catch {
-      dispatch({ type: ASYNC_ERROR });
-    }
+export const noLocalData = () => {
+  return {
+    type: ASYNC_ERROR
   };
 };
